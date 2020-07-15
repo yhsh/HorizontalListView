@@ -39,16 +39,22 @@ public class GiftPackageAdapter extends BaseAdapter {
             convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_gift_package, null);
             giftPackageHolder.tvJsWorld = convertView.findViewById(R.id.tv_js_world);
             giftPackageHolder.tvReward = convertView.findViewById(R.id.tv_reward);
+            giftPackageHolder.tvGetGitButton = convertView.findViewById(R.id.tv_get_git_button);
             convertView.setTag(giftPackageHolder);
         } else {
             giftPackageHolder = (GiftPackageHolder) convertView.getTag();
         }
         giftPackageHolder.tvJsWorld.setText("新版机锋世界" + position);
         giftPackageHolder.tvReward.setText(new StringBuilder("有").append(position).append("个公会奖励可领取"));
+        if (position % 2 == 0) {
+            giftPackageHolder.tvGetGitButton.setText("一键领取");
+        } else {
+            giftPackageHolder.tvGetGitButton.setText("已完成");
+        }
         return convertView;
     }
 
     class GiftPackageHolder {
-        TextView tvJsWorld, tvReward;
+        TextView tvJsWorld, tvReward, tvGetGitButton;
     }
 }
